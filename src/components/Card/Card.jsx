@@ -1,8 +1,14 @@
 import React from 'react'
 import './Card.scss'
 import Pic from '../../assets/images/pic.jpg'
+import { formatDistanceToNow } from 'date-fns'
 
-const Card = () => {
+const Card = ({ data }) => {
+  const { author, title, created } = data.data
+  
+  const date = new Date(created * 1000)
+  const formattedTime = formatDistanceToNow(date, { includeSeconds: true })
+
   return (
     <section className='card_container'>
         <div className='card_header'>
@@ -10,14 +16,14 @@ const Card = () => {
                 <img src={Pic} alt='avatar' />
             </div>
             <div className='card_username'>
-                <a href='#'>Sringtho</a>
+                <a href='#'>{author}</a>
             </div>
             <div className='card_time'>
-                <p>4 days Ago</p>
+                <p>{formattedTime} ago</p>
             </div>
         </div>
         <div className='card_title'>
-            <h2>Why you must be the best at whatever you do!</h2>
+            <h2>{title}</h2>
         </div>
         <div className='card_image'>
             <img src={Pic} alt='card-pic' />
