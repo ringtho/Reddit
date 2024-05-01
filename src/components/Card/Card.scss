@@ -82,18 +82,21 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border: 1px solid green;
+
+        .card_likes {
+            display: flex;
+            align-items: center;
+        }
 
         .card_comments {
             display: flex;
             align-items: center;
-            gap: 0.35rem;
-            border: 1px solid red;
-        }
+            gap: 0.25rem;
 
-        &:hover,
-        &:focus {
-            cursor: pointer;
+            &:hover,
+            &:focus {
+                cursor: pointer;
+            }
         }
     }
 }

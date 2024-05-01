@@ -3,13 +3,15 @@ import './Card.scss'
 import { formatDistanceToNow } from 'date-fns'
 import { getUserInfo } from '../../api/api'
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined'
+import KeyboardDoubleArrowUpRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowUpRounded'
+import KeyboardDoubleArrowDownRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowDownRounded'
 import { formatNumber } from '../../utils/formatNumber'
 // import { processImgUrl } from '../../utils/imageUrlProcessing'
 
 const Card = ({ data }) => {
 
   const [authorData, setAuthorData] = useState([])
-  const { author, title, created, score, url, subreddit, is_self, selftext, is_video, media, preview, domain, num_comments } = data.data
+  const { author, title, created, score, url, subreddit, is_self, selftext, is_video, media, domain, num_comments } = data.data
   const date = new Date(created * 1000)
   const formattedTime = formatDistanceToNow(date, { includeSeconds: true })
 
@@ -19,6 +21,7 @@ const Card = ({ data }) => {
 
   const videoUrl = media?.reddit_video?.fallback_url
   const numComments = formatNumber(num_comments)
+  const votes = formatNumber(score)
 
   useEffect(() => {
     
@@ -76,7 +79,11 @@ const Card = ({ data }) => {
         </div>
       )}
       <div className="card_footer">
-        <div>{score}</div>
+        <div className='card_likes'>
+            <KeyboardDoubleArrowUpRoundedIcon />
+            {votes}
+            <KeyboardDoubleArrowDownRoundedIcon />
+        </div>
         <div className='card_comments'>
             <ModeCommentOutlinedIcon />
             {numComments}
