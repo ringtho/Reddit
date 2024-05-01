@@ -5,6 +5,7 @@ import './Comments.scss'
 
 const Comments = ( { permalink }) => {
     const [comments, setComments] = useState([])
+    console.log(comments)
 
     useEffect(() => {
       const getPostComments = async (link) => {
@@ -20,9 +21,15 @@ const Comments = ( { permalink }) => {
 
   return (
     <section className="comments_container">
-      {comments.map((commentData) => (
-        <Comment key={commentData.data.id} data={commentData.data} />
-      ))}
+      { comments.map((commentData) => {
+        if(commentData.kind === 't1') {
+            return <Comment key={commentData.data.id} data={commentData.data} />
+        }
+        return
+      }
+        
+        
+      )}
     </section>
   )
 }

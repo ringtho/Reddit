@@ -8,8 +8,7 @@ import { getUserInfo } from '../../api/api'
 import './Comment.scss'
 
 const Comment = ({ data }) => {
-  console.log(data)
-  const { body, author, score, created, subreddit, replies } = data
+  const { body, author, score, created, replies } = data
   const [authorIcon, setAuthorIcon] = useState('')
   const [upVote, setUpVote] = useState(false)
   const [downVote, setDownVote] = useState(false)
@@ -39,23 +38,18 @@ const Comment = ({ data }) => {
   }
 
   return (
-    <section className="card_container">
+    <section className="card_container comment">
       <div className="card_header">
         <div className="card_avatar">
           <img src={authorIcon} alt="avatar" />
         </div>
         <div className="card_username">
-          <a href="#">{author}</a>
+          <p>{author}</p>
         </div>
         <div className="card_time">
           <p>{formattedTime} ago</p>
         </div>
       </div>
-      {/* {subreddit && (
-        <div className="card_subreddit">
-          <span>#{subreddit}</span>
-        </div>
-      )} */}
       <div className="card_description">
           <p>{body}</p>
       </div>

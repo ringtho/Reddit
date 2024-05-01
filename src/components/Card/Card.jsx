@@ -56,7 +56,7 @@ const Card = ({ data }) => {
             <img src={authorIcon} alt="avatar" />
           </div>
           <div className="card_username">
-            <a href="#">{author}</a>
+            <p>{author}</p>
           </div>
           <div className="card_time">
             <p>{formattedTime} ago</p>

@@ -29,7 +29,7 @@
 
         .card_username {
             margin-left: 0.75rem;
-             a {
+             p {
                 font-size: 0.825rem;
                 color: #FFF;
                 opacity: 0.6;
@@ -66,6 +66,12 @@
             color: #000;
         }
         
+    }
+
+    .card_description {
+        p {
+            opacity: 0.6;
+        }
     }
 
     .card_image, .card_video {
