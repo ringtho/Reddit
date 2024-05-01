@@ -86,6 +86,24 @@
         .card_likes {
             display: flex;
             align-items: center;
+
+            padding: 0.5rem;
+            border-radius: 1rem;
+            background-color: var(--primary-color);
+
+            .icon_up {
+                &:hover {
+                    color: #06d6a0;
+                    cursor: pointer;
+                }
+            }
+
+            .icon_down {
+                &:hover {
+                    color: #f72585;
+                    cursor: pointer;
+                }
+            }
         }
 
         .card_comments {
@@ -93,9 +111,14 @@
             align-items: center;
             gap: 0.25rem;
 
+            padding: 0.5rem;
+            border-radius: 1rem;
+            background-color: var(--primary-color);
+
             &:hover,
             &:focus {
                 cursor: pointer;
+                background-color: rgba(#8338ec, 0.3);
             }
         }
     }

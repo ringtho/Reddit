@@ -19,7 +19,7 @@ const Main = () => {
   }, [])
 
   const cardArr = data.map((redditData) => {
-    console.log(redditData)
+    // console.log(redditData)
     return <Card key={redditData.data.id} data={redditData} />
   })
 

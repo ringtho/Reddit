@@ -11,3 +11,10 @@ export const getUserInfo = async (username) => {
     const data = await response.json()
     return data
 }
+
+export const getRedditComments = async (permalink) => {
+    const url = `https://www.reddit.com/${permalink}/.json?raw_json=1;limit=5`
+    const response = await fetch(url)
+    const data = await response.json()
+    return data
+}
