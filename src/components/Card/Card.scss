@@ -58,10 +58,20 @@
         }
     }
 
-    .card_image {
+    .card_subreddit {
+        span {
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            background-color: #f2cc8f;
+            color: #000;
+        }
+        
+    }
+
+    .card_image, .card_video {
         height: 300px;
 
-        img {
+        img, video {
             height: 100%;
             width: 100%;
             border-radius: 0.75rem;
