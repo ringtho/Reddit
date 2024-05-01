@@ -1,26 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Card.scss'
-import Pic from '../../assets/images/pic.jpg'
 import { formatDistanceToNow } from 'date-fns'
+import { getUserInfo } from '../../api/api'
+import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined'
+import { formatNumber } from '../../utils/formatNumber'
 // import { processImgUrl } from '../../utils/imageUrlProcessing'
 
 const Card = ({ data }) => {
-  const { author, title, created, score, url, subreddit, is_self, selftext, is_video, media } = data.data
-  
+
+  const [authorData, setAuthorData] = useState([])
+  const { author, title, created, score, url, subreddit, is_self, selftext, is_video, media, preview, domain, num_comments } = data.data
   const date = new Date(created * 1000)
   const formattedTime = formatDistanceToNow(date, { includeSeconds: true })
 
 //   const previewImg = preview?.images[0]?.source?.url
-//   const imgUrl = processImgUrl(previewImg)
+//   const img = processImgUrl(previewImg)
 
 
   const videoUrl = media?.reddit_video?.fallback_url
+  const numComments = formatNumber(num_comments)
+
+  useEffect(() => {
+    
+    const getAuthorData = async () => {
+        try {
+            const { data } = await getUserInfo(author)
+            setAuthorData(data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    getAuthorData()
+
+  }, [author])
+
+  console.log(domain)
 
   return (
     <section className="card_container">
       <div className="card_header">
         <div className="card_avatar">
-          <img src={Pic} alt="avatar" />
+          <img src={authorData.icon_img} alt="avatar" />
         </div>
         <div className="card_username">
           <a href="#">{author}</a>
@@ -57,7 +77,10 @@ const Card = ({ data }) => {
       )}
       <div className="card_footer">
         <div>{score}</div>
-        <div>Comments</div>
+        <div className='card_comments'>
+            <ModeCommentOutlinedIcon />
+            {numComments}
+        </div>
       </div>
     </section>
   )

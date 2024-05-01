@@ -81,5 +81,19 @@
     .card_footer {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        border: 1px solid green;
+
+        .card_comments {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            border: 1px solid red;
+        }
+
+        &:hover,
+        &:focus {
+            cursor: pointer;
+        }
     }
 }

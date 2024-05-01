@@ -9,8 +9,8 @@ const Main = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const data = await getRedditData()
-        setData(data.data.children)
+        const { data } = await getRedditData()
+        setData(data.children)
       } catch (error) {
         console.log(error)
       }
