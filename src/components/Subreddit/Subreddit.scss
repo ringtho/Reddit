@@ -1,5 +1,5 @@
 .subreddit_container {
-
+    // border: 1px solid green;
 
     .subreddit {
         padding: 0.5rem;
@@ -15,11 +15,19 @@
             border-radius: 50%;
             aspect-ratio: 1;
 
-        img {
-            height: 100%;
-            width: 100%;
-            border-radius: 50%;
+            img {
+                height: 100%;
+                width: 100%;
+                border-radius: 50%;
+            }
         }
-}
+
+        &:hover,
+        &:focus {
+            cursor: pointer;
+            background-color: var(--primary-color-2);
+            transition: background-color 0.3s;
+            border-radius: 2rem;
+        }
     }
 }

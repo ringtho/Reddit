@@ -28,7 +28,7 @@ const Main = () => {
     <main className='main_wrapper'>
       <section className='main_container'>{cardArr}</section>
       <aside className='main_subreddits'>
-        <Subreddits />
+        <Subreddits setData={setData} />
       </aside>
     </main>
   )

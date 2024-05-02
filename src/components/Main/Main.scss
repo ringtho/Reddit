@@ -1,6 +1,8 @@
 .main_wrapper {
-
+    margin: 0 auto;
     display: flex;
+    justify-content: center;
+    max-width: 1080px;
 
     .main_container {
         padding: 1rem 0;

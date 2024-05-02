@@ -1,5 +1,5 @@
-export const getRedditData = async () => {
-    const url = 'https://www.reddit.com/r/popular.json?raw_json=1'
+export const getRedditData = async (urlLink) => {
+    const url = urlLink ? `https://www.reddit.com${urlLink}.json?raw_json=1` : 'https://www.reddit.com/r/popular.json?raw_json=1'
     const response = await fetch(url)
     const data = await response.json()
     return data

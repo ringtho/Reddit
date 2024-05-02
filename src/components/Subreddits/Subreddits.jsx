@@ -3,7 +3,7 @@ import './Subreddits.scss'
 import { getPopularSubreddits } from '../../api/api'
 import Subreddit from '../Subreddit/Subreddit'
 
-const Subreddits = () => {
+const Subreddits = ({ setData }) => {
   const [subreddits, setSubreddits] = useState([])
 
   useEffect(() => {
@@ -19,14 +19,19 @@ const Subreddits = () => {
   }, [])
 
   const subredditsList = subreddits.map((subreddit) => {
-    console.log(subreddit)
-    return <Subreddit key={subreddit.data.id} data={subreddit.data} />
+    return (
+      <Subreddit
+        key={subreddit.data.id}
+        data={subreddit.data}
+        setData={setData}
+      />
+    )
   })
 
   return (
     <section className="subreddits_wrapper">
       <h2>Subreddits</h2>
-      <div className='subreddits_container'>{subredditsList}</div>
+      <div className="subreddits_container">{subredditsList}</div>
     </section>
   )
 }
