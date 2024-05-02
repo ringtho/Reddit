@@ -6,8 +6,7 @@ import Main from "./components/Main/Main";
 function App() {
   const [data, setData] = useState([])
   const [query, setQuery] = useState('')
-
-  console.log(data)
+  
   return (
     <div className="app">
       <Navbar setData={setData} query={query} setQuery={setQuery} />

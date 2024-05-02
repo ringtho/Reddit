@@ -3,6 +3,7 @@ import './Navbar.scss'
 import RedditIcon from '@mui/icons-material/Reddit'
 import MenuIcon from '@mui/icons-material/Menu'
 import { searchRedditQuery } from '../../api/api'
+import SearchIcon from '@mui/icons-material/Search'
 
 const Navbar = ({ setData, query, setQuery }) => {
 
@@ -27,9 +28,17 @@ const Navbar = ({ setData, query, setQuery }) => {
         <RedditIcon sx={{ fontSize: '30px' }} />
         <h1>Reddit</h1>
       </div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={query} onChange={handleChange} required/>
-        <button>Submit</button>
+      <form onSubmit={handleSubmit} className="navbar_search">
+        <input
+          type="text"
+          value={query}
+          onChange={handleChange}
+          placeholder="Search Reddit"
+          required
+        />
+        <button>
+          <SearchIcon />
+        </button>
       </form>
       <div>
         <MenuIcon />

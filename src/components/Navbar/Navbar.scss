@@ -25,4 +25,41 @@
         font-family: "Reddit Mono", monospace;
         font-weight: 300;
     }
+
+    .navbar_search {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+
+        @media screen and (min-width: 480px) {
+            min-width: 300px;
+            width: 50%;
+        }
+
+        
+
+        input[type=text] {
+            background-color: var(--primary-color);
+            border: none;
+            outline: none;
+            color: #FFF;
+            padding: 1rem 1rem 1rem 40px;
+            border-radius: 0.5rem;
+            width: 100%;
+        }
+
+        button {
+            background-color: inherit;
+            cursor: pointer;
+            outline: none;
+            border: none;
+            position: absolute;
+            color: #FFF;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10px;
+        }
+        
+    }
 }
