@@ -1,8 +1,10 @@
 export const getRedditData = async (urlLink) => {
-    const url = urlLink ? `https://www.reddit.com${urlLink}.json?raw_json=1` : 'https://www.reddit.com/r/popular.json?raw_json=1'
-    const response = await fetch(url)
-    const data = await response.json()
-    return data
+  const url = urlLink
+    ? `https://www.reddit.com${urlLink}.json?raw_json=1`
+    : 'https://www.reddit.com/r/popular.json?raw_json=1'
+  const response = await fetch(url)
+  const data = await response.json()
+  return data
 }
 
 export const getUserInfo = async (username) => {
@@ -21,6 +23,13 @@ export const getRedditComments = async (permalink) => {
 
 export const getPopularSubreddits = async () => {
     const url = `https://www.reddit.com/subreddits/popular.json`
+    const response = await fetch(url)
+    const data = await response.json()
+    return data
+}
+
+export const searchRedditQuery = async (query) => {
+    const url = `https://www.reddit.com/search.json?q=${query}`
     const response = await fetch(url)
     const data = await response.json()
     return data

@@ -52,6 +52,7 @@
     }
 
     .card_title {
+        overflow-wrap: break-word;
         h2 {
             font-size: 1.5rem;
             font-weight: 400;
@@ -73,6 +74,7 @@
     }
 
     .card_description {
+        overflow-wrap: break-word;
         p {
             opacity: 0.8;
             line-height: 20px;

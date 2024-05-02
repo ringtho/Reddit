@@ -5,7 +5,6 @@ import './Comments.scss'
 
 const Comments = ( { permalink }) => {
     const [comments, setComments] = useState([])
-    console.log(comments)
 
     useEffect(() => {
       const getPostComments = async (link) => {
