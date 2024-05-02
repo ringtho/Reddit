@@ -1,0 +1,25 @@
+.subreddit_container {
+
+
+    .subreddit {
+        padding: 0.5rem;
+        border-bottom: 1px solid var(--primary-color-2);
+
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .subreddit_avatar {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            aspect-ratio: 1;
+
+        img {
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+        }
+}
+    }
+}

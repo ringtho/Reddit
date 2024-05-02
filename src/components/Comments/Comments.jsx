@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getRedditComments, getUserInfo } from '../../api/api'
+import { getRedditComments } from '../../api/api'
 import Comment from '../Comment/Comment'
 import './Comments.scss'
 
@@ -25,7 +25,7 @@ const Comments = ( { permalink }) => {
         if(commentData.kind === 't1') {
             return <Comment key={commentData.data.id} data={commentData.data} />
         }
-        return
+        return null
       }
         
         

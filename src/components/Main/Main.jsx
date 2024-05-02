@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Main.scss'
 import Card from '../Card/Card'
 import { getRedditData } from '../../api/api'
+import Subreddits from '../Subreddits/Subreddits'
 
 const Main = () => {
   const [data, setData] = useState([])
@@ -24,8 +25,11 @@ const Main = () => {
   })
 
   return (
-    <main>
-      {cardArr}
+    <main className='main_wrapper'>
+      <section className='main_container'>{cardArr}</section>
+      <aside className='main_subreddits'>
+        <Subreddits />
+      </aside>
     </main>
   )
 }

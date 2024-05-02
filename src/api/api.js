@@ -18,3 +18,10 @@ export const getRedditComments = async (permalink) => {
     const data = await response.json()
     return data
 }
+
+export const getPopularSubreddits = async () => {
+    const url = `https://www.reddit.com/subreddits/popular.json`
+    const response = await fetch(url)
+    const data = await response.json()
+    return data
+}
