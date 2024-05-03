@@ -28,25 +28,25 @@
 
     .navbar_search {
         position: relative;
-
         display: flex;
         align-items: center;
+        width: 150px;
 
         @media screen and (min-width: 480px) {
             min-width: 300px;
             width: 50%;
         }
 
-        
-
         input[type=text] {
             background-color: var(--primary-color);
             border: none;
             outline: none;
             color: #FFF;
-            padding: 1rem 1rem 1rem 40px;
+            padding: 0.75rem 1rem 0.75rem 40px;
             border-radius: 0.5rem;
             width: 100%;
+            font-size: 1rem;
+            letter-spacing: 1px;
         }
 
         button {

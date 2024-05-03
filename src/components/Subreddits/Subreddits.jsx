@@ -30,7 +30,7 @@ const Subreddits = ({ setData }) => {
 
   return (
     <section className="subreddits_wrapper">
-      <h2>Subreddits</h2>
+      <h2>Popular Communities</h2>
       <div className="subreddits_container">{subredditsList}</div>
     </section>
   )

@@ -15,7 +15,7 @@ const Card = ({ data }) => {
   const [upVote, setUpVote] = useState(false)
   const [downVote, setDownVote] = useState(false)
   const [viewComments, setViewComments] = useState(false)
-  const { author, title, created, score, url, subreddit, is_self, selftext, is_video, media, permalink, num_comments } = data.data
+  const { author, title, created, score, url, subreddit, is_self, selftext, is_video, media, permalink, num_comments } = data?.data
   
   const formattedTime = formatTime(created)
 //   const previewImg = preview?.images[0]?.source?.url
@@ -30,7 +30,7 @@ const Card = ({ data }) => {
     const getAuthorData = async () => {
         try {
             const { data } = await getUserInfo(author)
-            setAuthorIcon(data.icon_img)
+            setAuthorIcon(data?.icon_img)
         } catch (error) {
             console.log(error)
         }
