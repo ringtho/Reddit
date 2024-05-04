@@ -1,37 +1,30 @@
-import React, { useEffect, useState } from 'react'
 import './Subreddits.scss'
-import { getPopularSubreddits } from '../../api/api'
 import Subreddit from '../Subreddit/Subreddit'
+import { useGetPopularSubredditsQuery } from '../../api/services/postsData'
 
-const Subreddits = ({ setData }) => {
-  const [subreddits, setSubreddits] = useState([])
+const Subreddits = ({ setData, setUrl }) => {
+  const {data, isLoading } = useGetPopularSubredditsQuery()
 
-  useEffect(() => {
-    const getSubRedditList = async () => {
-        try {
-            const { data } = await getPopularSubreddits()
-            setSubreddits(data.children)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    getSubRedditList()
-  }, [])
-
-  const subredditsList = subreddits.map((subreddit) => {
+  const subredditsList = data?.data?.children?.map((subreddit) => {
     return (
       <Subreddit
         key={subreddit.data.id}
         data={subreddit.data}
         setData={setData}
+        setUrl={setUrl}
       />
     )
   })
 
   return (
     <section className="subreddits_wrapper">
-      <h2>Popular Communities</h2>
-      <div className="subreddits_container">{subredditsList}</div>
+      {isLoading && <h2>Loading....</h2>}
+      {!isLoading && (
+        <>
+          <h2>Popular Communities</h2>
+          <div className="subreddits_container">{subredditsList}</div>
+        </>
+      )}
     </section>
   )
 }

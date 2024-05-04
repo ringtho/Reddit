@@ -1,15 +1,13 @@
 import React from 'react'
 import './Main.scss'
 import Card from '../Card/Card'
-// import { getRedditData } from '../../api/api'
 import Subreddits from '../Subreddits/Subreddits'
 import { useGetPostsQuery } from '../../api/services/postsData'
 
-const Main = ({  setData, query }) => {
+const Main = ({  setData, query, url, setUrl }) => {
 
-  const {data, isLoading, isError } = useGetPostsQuery()
+  const {data, isLoading, isError } = useGetPostsQuery(url)
   const cardArr = data?.data?.children.map((redditData) => {
-    console.log(redditData)
     return <Card key={redditData.data.id} data={redditData} />
   })
 
@@ -24,8 +22,9 @@ const Main = ({  setData, query }) => {
         <section className="main_container">{cardArr}</section>
       )}
       {isLoading && <p>Loading...</p>}
+      {isError && <h2>An Error occurred. Please try again later</h2>}
       <aside className="main_subreddits">
-        <Subreddits setData={setData} />
+        <Subreddits setData={setData} setUrl={setUrl} />
       </aside>
     </main>
   )

@@ -10,7 +10,11 @@ export const postsApi = createApi({
           ? `${urlLink}.json?raw_json=1`
           : 'https://www.reddit.com/r/popular.json?raw_json=1',
     }),
+
+    getPopularSubreddits: builder.query({
+        query: () => `/subreddits/popular.json`
+    })
   }),
 })
 
-export const { useGetPostsQuery } = postsApi
+export const { useGetPostsQuery, useGetPopularSubredditsQuery } = postsApi

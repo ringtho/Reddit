@@ -1,19 +1,12 @@
 import React from 'react'
 import './Subreddit.scss'
 import Icon from '../../assets/images/redditIcon.png'
-import { getRedditData } from '../../api/api'
 
-const Subreddit = ({ data, setData }) => {
+const Subreddit = ({ data, setData, setUrl }) => {
   const {title, icon_img, url} = data
 
   const handleClick = async () => {
-    console.log(url)
-    try {
-        const { data } = await getRedditData(url)
-        setData(data.children)
-    } catch(error) {
-        console.log(error)
-    }
+    setUrl(url)
   }
 
   return (
