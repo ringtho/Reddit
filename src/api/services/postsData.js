@@ -8,13 +8,17 @@ export const postsApi = createApi({
       query: (urlLink) =>
         urlLink
           ? `${urlLink}.json?raw_json=1`
-          : 'https://www.reddit.com/r/popular.json?raw_json=1',
+          : '/r/popular.json?raw_json=1',
     }),
 
     getPopularSubreddits: builder.query({
-        query: () => `/subreddits/popular.json`
-    })
+      query: () => `/subreddits/popular.json`,
+    }),
+
+    getPostComments: builder.query({
+      query: (permalink) => `${permalink}/.json?raw_json=1;limit=6`,
+    }),
   }),
 })
 
-export const { useGetPostsQuery, useGetPopularSubredditsQuery } = postsApi
+export const { useGetPostsQuery, useGetPopularSubredditsQuery, useGetPostCommentsQuery } = postsApi
