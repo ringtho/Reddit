@@ -1,25 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Navbar.scss'
 import RedditIcon from '@mui/icons-material/Reddit'
 import MenuIcon from '@mui/icons-material/Menu'
-import { searchRedditQuery } from '../../api/api'
 import SearchIcon from '@mui/icons-material/Search'
 
-const Navbar = ({ setData, query, setQuery }) => {
+const Navbar = ({ setQuery }) => {
+  const [word, setWord] = useState('')
 
   const handleChange = (e) => {
-    setQuery(e.target.value)
+    setWord(e.target.value)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      const { data } = await searchRedditQuery(query)
-      setData(data.children)
-    } catch(error) {
-      console.log(error)
-    }
-    setQuery('')
+    setQuery(word.trim())
+    setWord('')
   }
 
   return (
@@ -31,7 +26,7 @@ const Navbar = ({ setData, query, setQuery }) => {
       <form onSubmit={handleSubmit} className="navbar_search">
         <input
           type="text"
-          value={query}
+          value={word}
           onChange={handleChange}
           placeholder="Search Reddit"
           required

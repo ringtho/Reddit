@@ -6,9 +6,7 @@ export const postsApi = createApi({
   endpoints: (builder) => ({
     getPosts: builder.query({
       query: (urlLink) =>
-        urlLink
-          ? `${urlLink}.json?raw_json=1`
-          : '/r/popular.json?raw_json=1',
+        urlLink ? `${urlLink}.json?raw_json=1` : '/r/popular.json?raw_json=1',
     }),
 
     getPopularSubreddits: builder.query({
@@ -18,7 +16,11 @@ export const postsApi = createApi({
     getPostComments: builder.query({
       query: (permalink) => `${permalink}/.json?raw_json=1;limit=6`,
     }),
+
+    getSearchResults: builder.query({
+      query: (query) => `/search.json?q=${query}`,
+    }),
   }),
 })
 
-export const { useGetPostsQuery, useGetPopularSubredditsQuery, useGetPostCommentsQuery } = postsApi
+export const { useGetPostsQuery, useGetPopularSubredditsQuery, useGetPostCommentsQuery, useGetSearchResultsQuery } = postsApi

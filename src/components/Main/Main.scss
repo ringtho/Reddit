@@ -11,6 +11,10 @@
         padding: 2rem;
     }
 
+    @media screen and (min-width: 1080px) {
+        gap: 2rem
+    }
+
 
     .main_container {
         display: flex;

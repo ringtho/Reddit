@@ -2,11 +2,12 @@ import React from 'react'
 import './Subreddit.scss'
 import Icon from '../../assets/images/redditIcon.png'
 
-const Subreddit = ({ data, setData, setUrl }) => {
+const Subreddit = ({ data, setUrl, setQuery }) => {
   const {title, icon_img, url} = data
 
   const handleClick = async () => {
-    setUrl(url)
+    setQuery('')
+    setUrl(url)  
   }
 
   return (
