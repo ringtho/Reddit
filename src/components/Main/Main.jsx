@@ -4,6 +4,7 @@ import Card from '../Card/Card'
 import Subreddits from '../Subreddits/Subreddits'
 import { useGetPostsQuery, useGetSearchResultsQuery } from '../../api/services/postsData'
 import { useSelector } from 'react-redux'
+import CardSkeleton from '../CardSkeleton/CardSkeleton'
 
 const Main = () => {
   const { url, query } = useSelector((state) => state.postsData)
@@ -31,7 +32,7 @@ const Main = () => {
       {!isFetching && data?.data?.children.length > 0 && (
         <section className="main_container">{cardArr}</section>
       )}
-      {(isFetching) && <p>Loading...</p>}
+      {isFetching && <CardSkeleton cards={25} />}
       {isError && <h2>An Error occurred. Please try again later</h2>}
       {!isFetching && data?.data?.children.length === 0 && (
         <p>No results found for {query}</p>

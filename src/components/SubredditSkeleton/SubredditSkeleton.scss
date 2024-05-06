@@ -1,0 +1,11 @@
+.subreddit_skeleton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--primary-color-2);
+
+    .subreddit_text {
+        width: 100%;
+    }
+}

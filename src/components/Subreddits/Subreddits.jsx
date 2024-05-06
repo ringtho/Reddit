@@ -1,6 +1,8 @@
 import './Subreddits.scss'
 import Subreddit from '../Subreddit/Subreddit'
 import { useGetPopularSubredditsQuery } from '../../api/services/postsData'
+import SubredditSkeleton from '../SubredditSkeleton/SubredditSkeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const Subreddits = () => {
   const {data, isLoading } = useGetPopularSubredditsQuery()
@@ -16,13 +18,11 @@ const Subreddits = () => {
 
   return (
     <section className="subreddits_wrapper">
-      {isLoading && <h2>Loading....</h2>}
-      {!isLoading && (
-        <>
-          <h2>Popular Communities</h2>
-          <div className="subreddits_container">{subredditsList}</div>
-        </>
-      )}
+      <h2>Popular Communities</h2>
+      {isLoading && <SubredditSkeleton count={25} />}
+      <>
+        <div className="subreddits_container">{subredditsList}</div>
+      </>
     </section>
   )
 }

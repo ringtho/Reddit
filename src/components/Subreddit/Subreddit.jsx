@@ -17,7 +17,7 @@ const Subreddit = ({ data }) => {
     <div className="subreddit_container">
       <div className="subreddit" onClick={handleClick}>
         <div className="subreddit_avatar">
-          <img src={icon_img || Icon} alt="avatar" />
+          <img src={icon_img || Icon} alt={title} />
         </div>
         <p>{title}</p>
       </div>
