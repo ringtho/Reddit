@@ -18,6 +18,7 @@ const Navbar = () => {
     e.preventDefault()
     dispatch(addQuery(word.trim()))
     dispatch(addUrl(null))
+    setWord('')
   }
 
   return (

@@ -9,36 +9,32 @@ const Main = () => {
   const { url, query } = useSelector((state) => state.postsData)
   const {
     data: postsData,
-    isLoading: postsLoading,
+    isFetching: postsLoading,
     isError: postsError,
   } = useGetPostsQuery(url, { skip: !!query })
   const {
     data: searchResults,
-    isLoading: searchResultsLoading,
+    isFetching: searchResultsLoading,
     isError: searchResultsError,
   } = useGetSearchResultsQuery(query, { skip: !query })
 
-  // const { data, isLoading, isError } = useGetPostsQuery(url, { skip: !!query })
-
   const data = query ? searchResults : postsData
-  const isLoading = query ? searchResultsLoading : postsLoading
+  const isFetching = query ? searchResultsLoading : postsLoading
   const isError = query ? searchResultsError : postsError
 
   const cardArr = data?.data?.children.map((redditData) => {
     return <Card key={redditData.data.id} data={redditData} />
   })
 
-  console.log('Query:', query, 'URL:', url, "isLoading:", isLoading)
-
   return (
     <main className="main_wrapper">
-      {!isLoading && data?.data?.children.length > 0 && (
+      {!isFetching && data?.data?.children.length > 0 && (
         <section className="main_container">{cardArr}</section>
       )}
-      {isLoading && <p>Loading...</p>}
+      {(isFetching) && <p>Loading...</p>}
       {isError && <h2>An Error occurred. Please try again later</h2>}
-      {!isLoading && data?.data?.children.length === 0 && (
-        <p>No results found.</p>
+      {!isFetching && data?.data?.children.length === 0 && (
+        <p>No results found for {query}</p>
       )}
       <aside className="main_subreddits">
         <Subreddits />
