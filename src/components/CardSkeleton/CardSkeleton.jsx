@@ -24,7 +24,7 @@ const CardSkeleton = ({ cards }) => {
     </div>
   ))
   return (
-    <SkeletonTheme highlightColor="#1f2226" baseColor="#212529">
+    <SkeletonTheme highlightColor="#1f2226" baseColor="#212529" duration={1}>
       <div className="skeleton_wrapper">{skeletonList}</div>
     </SkeletonTheme>
   )
