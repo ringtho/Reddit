@@ -20,6 +20,10 @@ export const postsApi = createApi({
     getSearchResults: builder.query({
       query: (query) => `/search.json?q=${query}`,
     }),
+
+    getUserInfo: builder.query({
+      query: (username) => `user/${username}/about.json?raw_json=1`,
+    }),
   }),
 })
 
@@ -28,4 +32,5 @@ export const {
   useGetPopularSubredditsQuery,
   useGetPostCommentsQuery,
   useGetSearchResultsQuery,
+  useGetUserInfoQuery
 } = postsApi

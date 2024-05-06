@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './Main.scss'
 import Card from '../Card/Card'
 import Subreddits from '../Subreddits/Subreddits'

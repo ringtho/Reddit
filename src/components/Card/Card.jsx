@@ -1,21 +1,37 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './Card.scss'
-import { getUserInfo } from '../../api/api'
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined'
 import KeyboardDoubleArrowUpRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowUpRounded'
 import KeyboardDoubleArrowDownRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowDownRounded'
 import { formatNumber } from '../../utils/formatNumber'
 import Comments from '../Comments/Comments'
 import { formatTime } from '../../utils/formatTime'
+import { useGetUserInfoQuery } from '../../api/services/postsData'
 // import { processImgUrl } from '../../utils/imageUrlProcessing'
 
 const Card = ({ data }) => {
 
-  const [authorIcon, setAuthorIcon] = useState("")
+  // const [authorIcon, setAuthorIcon] = useState("")
   const [upVote, setUpVote] = useState(false)
   const [downVote, setDownVote] = useState(false)
   const [viewComments, setViewComments] = useState(false)
-  const { author, title, created, score, url, subreddit, is_self, selftext, is_video, media, permalink, num_comments } = data?.data
+  const {
+    author,
+    title,
+    created,
+    score,
+    url,
+    subreddit,
+    is_self,
+    selftext,
+    is_video,
+    media,
+    permalink,
+    num_comments,
+  } = data?.data
+  const authorData = useGetUserInfoQuery(author)
+  const authorIcon = authorData?.data?.data?.icon_img
+
   
   const formattedTime = formatTime(created)
 //   const previewImg = preview?.images[0]?.source?.url
@@ -25,18 +41,6 @@ const Card = ({ data }) => {
   const videoUrl = media?.reddit_video?.fallback_url
   const numComments = formatNumber(num_comments)
   const votes = formatNumber(score)
-
-  useEffect(() => {
-    const getAuthorData = async () => {
-        try {
-            const { data } = await getUserInfo(author)
-            setAuthorIcon(data?.icon_img)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    getAuthorData()
-  }, [author])
 
   const handleUpVote = () => {
     setUpVote(!upVote)

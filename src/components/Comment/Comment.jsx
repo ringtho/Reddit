@@ -1,31 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { formatTime } from '../../utils/formatTime'
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined'
 import KeyboardDoubleArrowUpRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowUpRounded'
 import KeyboardDoubleArrowDownRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowDownRounded'
 import { formatNumber } from '../../utils/formatNumber'
-import { getUserInfo } from '../../api/api'
+import { useGetUserInfoQuery } from '../../api/services/postsData'
 import './Comment.scss'
 
 const Comment = ({ data }) => {
   const { body, author, score, created, replies } = data
-  const [authorIcon, setAuthorIcon] = useState('')
+  const authorData = useGetUserInfoQuery(author)
+  const authorIcon = authorData?.data?.data?.icon_img
   const [upVote, setUpVote] = useState(false)
   const [downVote, setDownVote] = useState(false)
   const formattedTime = formatTime(created)
   const votes = formatNumber(score)
-
-  useEffect(() => {
-    const getAuthorData = async () => {
-      try {
-        const { data } = await getUserInfo(author)
-        setAuthorIcon(data.icon_img)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    getAuthorData()
-  }, [author])
 
   const handleUpVote = () => {
     setUpVote(!upVote)
