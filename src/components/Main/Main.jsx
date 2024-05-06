@@ -35,9 +35,8 @@ const Main = () => {
     <main className="main_wrapper">
       {!isFetching && posts.length > 0 && (
         <section className="main_container">
-          {searchResults?.data?.children.length > 0 && !searchResultsLoading && (
-            <p>Search Results for "{query}"</p>
-          )}
+          {searchResults?.data?.children.length > 0 &&
+            !searchResultsLoading && <p>Search Results for "{query}"</p>}
           {cardArr}
         </section>
       )}

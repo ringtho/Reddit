@@ -39,7 +39,7 @@ const Navbar = () => {
           <SearchIcon />
         </button>
       </form>
-      <div>
+      <div className='menu_icon'>
         <MenuIcon />
       </div>
     </nav>

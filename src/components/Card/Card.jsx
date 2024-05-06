@@ -119,14 +119,12 @@ const Card = ({ data }) => {
             className="card_comments"
             onClick={() => setViewComments(!viewComments)}
           >
-            <ModeCommentOutlinedIcon />
-            {numComments}
+            <ModeCommentOutlinedIcon className="comments_icon" />
+            <p>{numComments}</p>
           </div>
         </div>
       </section>
-      <aside>
-        {viewComments && <Comments permalink={permalink} />}
-      </aside>
+      <aside>{viewComments && <Comments permalink={permalink} />}</aside>
     </>
   )
 }

@@ -100,11 +100,16 @@
             display: flex;
             align-items: center;
 
-            padding: 0.5rem;
+            padding: 0.5rem 1rem;
             border-radius: 1rem;
             background-color: var(--primary-color);
 
+            height: 40px;
+
+            opacity: 0.75;
+
             .icon_up {
+                font-size: 1rem;
                 &:hover {
                     color: #06d6a0;
                     cursor: pointer;
@@ -112,10 +117,15 @@
             }
 
             .icon_down {
+                font-size: 1rem;
                 &:hover {
                     color: #f72585;
                     cursor: pointer;
                 }
+            }
+
+            p {
+                font-size: 0.9rem;
             }
         }
 
@@ -124,14 +134,25 @@
             align-items: center;
             gap: 0.25rem;
 
-            padding: 0.5rem;
+            padding: 0.5rem 1rem;
             border-radius: 1rem;
             background-color: var(--primary-color);
+            opacity: 0.75;
+
+            height: 40px;
 
             &:hover,
             &:focus {
                 cursor: pointer;
                 background-color: rgba(#8338ec, 0.3);
+            }
+
+            .comments_icon {
+                font-size: 1rem;
+            }
+
+            p {
+                font-size: 0.9rem;
             }
         }
     }
