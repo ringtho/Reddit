@@ -2,7 +2,7 @@ import './Subreddits.scss'
 import Subreddit from '../Subreddit/Subreddit'
 import { useGetPopularSubredditsQuery } from '../../api/services/postsData'
 
-const Subreddits = ({ setUrl, setQuery }) => {
+const Subreddits = () => {
   const {data, isLoading } = useGetPopularSubredditsQuery()
 
   const subredditsList = data?.data?.children?.map((subreddit) => {
@@ -10,8 +10,6 @@ const Subreddits = ({ setUrl, setQuery }) => {
       <Subreddit
         key={subreddit.data.id}
         data={subreddit.data}
-        setUrl={setUrl}
-        setQuery={setQuery}
       />
     )
   })

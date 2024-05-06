@@ -1,13 +1,16 @@
 import React from 'react'
 import './Subreddit.scss'
 import Icon from '../../assets/images/redditIcon.png'
+import { useDispatch } from 'react-redux'
+import { addQuery, addUrl } from '../../api/features/postsSlice'
 
-const Subreddit = ({ data, setUrl, setQuery }) => {
+const Subreddit = ({ data }) => {
   const {title, icon_img, url} = data
+  const dispatch = useDispatch()
 
   const handleClick = async () => {
-    setQuery('')
-    setUrl(url)  
+    dispatch(addQuery(null))
+    dispatch(addUrl(url))
   }
 
   return (

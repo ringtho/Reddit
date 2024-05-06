@@ -23,4 +23,9 @@ export const postsApi = createApi({
   }),
 })
 
-export const { useGetPostsQuery, useGetPopularSubredditsQuery, useGetPostCommentsQuery, useGetSearchResultsQuery } = postsApi
+export const {
+  useGetPostsQuery,
+  useGetPopularSubredditsQuery,
+  useGetPostCommentsQuery,
+  useGetSearchResultsQuery,
+} = postsApi

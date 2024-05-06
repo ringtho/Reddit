@@ -28,9 +28,9 @@ export const getUserInfo = async (username) => {
 //     return data
 // }
 
-export const searchRedditQuery = async (query) => {
-    const url = `https://www.reddit.com/search.json?q=${query}`
-    const response = await fetch(url)
-    const data = await response.json()
-    return data
-}
+// export const searchRedditQuery = async (query) => {
+//     const url = `https://www.reddit.com/search.json?q=${query}`
+//     const response = await fetch(url)
+//     const data = await response.json()
+//     return data
+// }
