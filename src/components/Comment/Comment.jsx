@@ -40,7 +40,7 @@ const Comment = ({ data }) => {
         </div>
       </div>
       <div className="card_description">
-          <p>{body}</p>
+        <p>{body}</p>
       </div>
       <div className="card_footer">
         <div className="card_likes">
@@ -66,7 +66,7 @@ const Comment = ({ data }) => {
         <div
           className="card_comments"
         >
-          <ModeCommentOutlinedIcon />
+          <ModeCommentOutlinedIcon className="comments_icon" />
           {replies?.data?.children?.length || 0}
         </div>
       </div>

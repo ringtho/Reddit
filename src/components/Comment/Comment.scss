@@ -1,6 +1,26 @@
 .comment {
     border: 1px solid var(--primary-color-2);
     background-color: var(--primary-color);
-    width: 80%;
+    width: 90%;
     align-self: flex-end;
+
+    @media screen and (min-width: 768px) {
+        width: 80%;
+    }
+
+    .card_footer {
+        .card_likes {
+            padding: 0.25rem 0.5rem;
+            height: 35px;
+        }
+
+        .card_comments {
+            padding: 0.25rem 0.5rem;
+            height: 35px;
+
+            .comments_icon {
+                font-size: 1rem;
+            }
+        }
+    }
 }

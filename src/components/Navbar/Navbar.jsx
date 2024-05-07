@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <nav className="navbar_container">
       <div className="logo_container">
-        <RedditIcon sx={{ fontSize: '30px' }} />
+        <RedditIcon className='logo' />
         <h1>Reddit</h1>
       </div>
       <form onSubmit={handleSubmit} className="navbar_search">
@@ -36,7 +36,7 @@ const Navbar = () => {
           required
         />
         <button>
-          <SearchIcon />
+          <SearchIcon className='search_icon' />
         </button>
       </form>
       <div className='menu_icon'>

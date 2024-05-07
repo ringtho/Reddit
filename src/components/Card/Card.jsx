@@ -53,7 +53,7 @@ const Card = ({ data }) => {
   }
 
   return (
-    <>
+    <div>
       <section className="card_container">
         <div className="card_header">
           <div className="card_avatar">
@@ -124,8 +124,13 @@ const Card = ({ data }) => {
           </div>
         </div>
       </section>
-      <aside>{viewComments && <Comments permalink={permalink} />}</aside>
-    </>
+      <aside
+        className="aside_comments"
+        style={{ display: viewComments ? 'block' : 'none' }}
+      >
+        {viewComments && <Comments permalink={permalink} />}
+      </aside>
+    </div>
   )
 }
 

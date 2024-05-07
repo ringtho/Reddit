@@ -10,6 +10,7 @@
 
     @media screen and (min-width: 768px) {
         padding: 1.5rem;
+        gap: 1.75rem;
     }
 
     .card_header {
@@ -30,7 +31,7 @@
         }
 
         .card_username {
-            margin-left: 0.75rem;
+            margin-left: 0.25rem;
              p {
                 font-size: 0.825rem;
                 color: #FFF;
@@ -54,10 +55,15 @@
     .card_title {
         overflow-wrap: break-word;
         h2 {
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 400;
-            line-height: 30px;
-            opacity: 0.8;
+            line-height: 22px;
+            opacity: 0.9;
+
+            @media screen and (min-width: 768px) {
+                font-size: 1.25rem;
+                line-height: 28px;
+            }
         }
     }
 
@@ -68,7 +74,11 @@
             border-radius: 0.5rem;
             background-color: #f2cc8f;
             color: #000;
-            font-size: 14px;
+            font-size: 12px;
+
+            @media screen and (min-width: 768px) {
+                font-size: 14px;
+            }
         }
         
     }
@@ -76,8 +86,14 @@
     .card_description {
         overflow-wrap: break-word;
         p {
-            opacity: 0.8;
+            opacity: 0.7;
+            font-size: 0.75rem;
             line-height: 20px;
+
+            @media screen and (min-width: 768px) {
+                font-size: 1rem;
+                line-height: 26px;
+            }
         }
     }
 
@@ -100,11 +116,11 @@
             display: flex;
             align-items: center;
 
-            padding: 0.5rem 1rem;
+            padding: 0.25rem 0.5rem;
             border-radius: 1rem;
             background-color: var(--primary-color);
 
-            height: 40px;
+            height: 35px;
 
             opacity: 0.75;
 
@@ -134,12 +150,12 @@
             align-items: center;
             gap: 0.25rem;
 
-            padding: 0.5rem 1rem;
+            padding: 0.25rem 0.5rem;
             border-radius: 1rem;
             background-color: var(--primary-color);
             opacity: 0.75;
 
-            height: 40px;
+            height: 35px;
 
             &:hover,
             &:focus {
@@ -156,4 +172,8 @@
             }
         }
     }
+}
+
+.aside_comments {
+    padding: 0.5rem 0 0 0;
 }
