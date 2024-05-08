@@ -4,7 +4,7 @@ import RedditIcon from '@mui/icons-material/Reddit'
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
 import { useDispatch } from 'react-redux'
-import { addQuery, addUrl } from '../../api/features/postsSlice'
+import { addQuery, addUrl, addAfter } from '../../api/features/postsSlice'
 
 const Navbar = () => {
   const [word, setWord] = useState('')
@@ -18,6 +18,7 @@ const Navbar = () => {
     e.preventDefault()
     dispatch(addQuery(word.trim()))
     dispatch(addUrl(null))
+    dispatch(addAfter(null))
     setWord('')
   }
 

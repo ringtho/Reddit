@@ -2,7 +2,8 @@ import React from 'react'
 import './Subreddit.scss'
 import Icon from '../../assets/images/redditIcon.png'
 import { useDispatch } from 'react-redux'
-import { addQuery, addUrl } from '../../api/features/postsSlice'
+import { addAfter, addQuery, addUrl } from '../../api/features/postsSlice'
+// import { postsApi } from '../../api/services/postsData'
 
 const Subreddit = ({ data }) => {
   const {title, icon_img, url} = data
@@ -11,6 +12,8 @@ const Subreddit = ({ data }) => {
   const handleClick = async () => {
     dispatch(addQuery(null))
     dispatch(addUrl(url))
+    dispatch(addAfter(null))
+    // dispatch(postsApi.util.invalidateTags(['Posts']))
   }
 
   return (

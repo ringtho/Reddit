@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const initialState = { url: '', query: '' }
+const initialState = { url: null, query: null, after: null }
 
 const postsSlice = createSlice({
     name: 'postStates',
@@ -11,9 +11,12 @@ const postsSlice = createSlice({
         },
         addQuery: (state, action) => {
             state.query = action.payload
+        },
+        addAfter: (state, action) => {
+            state.after = action.payload
         }
     }
 })
 
 export default postsSlice.reducer
-export const { addUrl, addQuery } = postsSlice.actions
+export const { addUrl, addQuery, addAfter } = postsSlice.actions
