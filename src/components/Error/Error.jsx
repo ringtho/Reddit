@@ -1,15 +1,22 @@
 import React from 'react'
 import './Error.scss'
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 
 const Error = ({ error }) => {
-  const { error: errorType, status } = error
+  let { error: errorType, status } = error
+
+  errorType = "Type error"
+  status = "FETCH ERROR"
   return (
     <div className="error_container">
-      {status ? (
-        <h2>{errorType}</h2>
-      ) : (
-        <h2>An Error occurred. Please try again later</h2>
-      )}
+        <div>
+          <div className='error_header'>
+            <ErrorOutlineIcon className='error_icon' />
+            <h1>Opps, we having an issue from our side</h1>
+            <p>Please try again later</p>
+          </div>
+          {status && <h2>{errorType}</h2>}
+        </div>
     </div>
   )
 }

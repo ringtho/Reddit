@@ -31,12 +31,15 @@ const Main = () => {
   } = useGetSearchResultsQuery({ query, after }, { skip: !query })
 
   const data = query ? searchResults : postsData
-  let isFetching = query ? searchResultsFetching : postsFetching
+  const isFetching = query ? searchResultsFetching : postsFetching
   const isLoading = query ? searchResultsLoading : postsLoading
-  const isError = query ? isSearchResultsError : isPostsError
-  const error = query ? searchResultsError : postsError
+  let isError = query ? isSearchResultsError : isPostsError
+  let error = query ? searchResultsError : postsError
 
-  console.log(error)
+  isError = true
+  error = {
+
+  }
 
   const posts = data?.data?.children || []
 
@@ -50,7 +53,7 @@ const Main = () => {
 
   return (
     <main className="main_wrapper">
-      {posts.length > 0 && (
+      {!isError && posts.length > 0 && (
         <section className="main_container">
           {searchResults?.data?.children.length > 0 &&
             !searchResultsFetching && <p>Search Results for "{query}"</p>}
@@ -75,9 +78,9 @@ const Main = () => {
       )}
       {isError && <Error error={error} />}
       {!isFetching && query && posts.length === 0 && <NotFound />}
-      <aside className="main_subreddits">
+      {!isError && (<aside className="main_subreddits">
         <Subreddits />
-      </aside>
+      </aside>)}
     </main>
   )
 }
