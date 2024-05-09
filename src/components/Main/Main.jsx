@@ -9,6 +9,7 @@ import NotFound from '../NotFound/NotFound'
 import { addAfter } from '../../api/features/postsSlice'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import InfiniteLoader from '../InfiniteLoader/InfiniteLoader'
+import Error from '../Error/Error'
 
 const Main = () => {
   const { url, query, after } = useSelector((state) => state.postsData)
@@ -18,19 +19,24 @@ const Main = () => {
     data: postsData,
     isFetching: postsFetching,
     isLoading: postsLoading,
-    isError: postsError,
+    isError: isPostsError,
+    error: postsError
   } = useGetPostsQuery({url, after}, { skip: !!query })
   const {
     data: searchResults,
     isFetching: searchResultsFetching,
     isLoading: searchResultsLoading,
-    isError: searchResultsError,
-  } = useGetSearchResultsQuery({query, after}, { skip: !query })
+    isError: isSearchResultsError,
+    error: searchResultsError,
+  } = useGetSearchResultsQuery({ query, after }, { skip: !query })
 
   const data = query ? searchResults : postsData
   let isFetching = query ? searchResultsFetching : postsFetching
   const isLoading = query ? searchResultsLoading : postsLoading
-  const isError = query ? searchResultsError : postsError
+  const isError = query ? isSearchResultsError : isPostsError
+  const error = query ? searchResultsError : postsError
+
+  console.log(error)
 
   const posts = data?.data?.children || []
 
@@ -41,9 +47,6 @@ const Main = () => {
   const fetchMoreData = () => {
     dispatch(addAfter(data.data.after))
   }
-
-  // console.log(posts)
-  // console.log("isLoading", isLoading, "isFetching", isFetching)
 
   return (
     <main className="main_wrapper">
@@ -70,8 +73,8 @@ const Main = () => {
       {(isLoading || isFetching) && posts.length === 0 && (
         <CardSkeleton cards={25} />
       )}
-      {isError && <h2>An Error occurred. Please try again later</h2>}
-      {!isFetching && posts.length === 0 && <NotFound />}
+      {isError && <Error error={error} />}
+      {!isFetching && query && posts.length === 0 && <NotFound />}
       <aside className="main_subreddits">
         <Subreddits />
       </aside>
