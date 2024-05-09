@@ -33,13 +33,8 @@ const Main = () => {
   const data = query ? searchResults : postsData
   const isFetching = query ? searchResultsFetching : postsFetching
   const isLoading = query ? searchResultsLoading : postsLoading
-  let isError = query ? isSearchResultsError : isPostsError
-  let error = query ? searchResultsError : postsError
-
-  isError = true
-  error = {
-
-  }
+  const isError = query ? isSearchResultsError : isPostsError
+  const error = query ? searchResultsError : postsError
 
   const posts = data?.data?.children || []
 

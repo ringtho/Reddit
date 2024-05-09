@@ -3,10 +3,7 @@ import './Error.scss'
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 
 const Error = ({ error }) => {
-  let { error: errorType, status } = error
-
-  errorType = "Type error"
-  status = "FETCH ERROR"
+  const { error: errorType, status } = error
   return (
     <div className="error_container">
         <div>
